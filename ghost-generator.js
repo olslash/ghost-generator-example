@@ -19,15 +19,15 @@ var speak = function* (greetings, script) {
   }
 }
 
-var awaitUserInput = Promise.coroutine(function* () {
-  yield new Promise(function(resolve) {
+var awaitUserInput = function () {
+  return new Promise(function(resolve) {
     process.stdin.on('data', function (data) {
       console.log('user says:', data.toString());
       process.stdin.removeAllListeners();
       resolve();
     });
   })
-});
+};
 
 
 // main ----------------
